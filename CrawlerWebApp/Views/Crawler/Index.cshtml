@@ -1,0 +1,71 @@
+﻿@model CrawlerWebApp.Models.CrawlerValidationModel
+@{
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+    
+
+@using (Html.BeginForm("CrawlBoard", "Crawler", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+        <h1>Ready? Let's start!</h1>
+        <br />
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1">URL</span>
+                    @Html.TextBoxFor(m => m.BoardUrl, "BoardUrl", new { @class = "form-control" })
+                </div>
+                <font color="red">@Html.ValidationMessageFor(m => m.BoardUrl)</font>
+                
+
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1">Name</span>
+                    @Html.TextBoxFor(m => m.BoardName, "BoardName", new { @class = "form-control" })
+                </div>
+                <font color="red"> @Html.ValidationMessageFor(m => m.BoardName)</font>
+                
+
+            </div>
+
+            <div class="col-md-4">
+
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1">#Themes</span>
+                    @Html.EditorFor(m => m.ThemeLimitator, "ThemeLimitator", new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+                <font color="red"> @Html.ValidationMessageFor(m => m.ThemeLimitator) </font>
+                
+
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1">#Threads</span>
+                    @Html.EditorFor(m => m.ThreadLimitator, "ThreadLimitator", new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+                <font color="red"> @Html.ValidationMessageFor(m => m.ThreadLimitator) </font>
+                
+            </div>
+
+
+            <div class="col-md-4">
+                        @Html.TextBoxFor(m => m.XslFile, new { @type = "file", @value = "Browse", @class = "form-control" })
+            </div>
+            <font color="red"> @Html.ValidationMessageFor(m => m.XslFile) </font>
+
+        </div>
+        <div class="row">
+            <div class="col-lg-12 buttonAlign">
+                <button type="submit" class="btn btn-success startCrawlingButton">Start</button>
+            </div>
+        </div>
+
+
+}
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            $("#goCrawling").addClass("active");
+        });
+    })(jQuery);
+</script>

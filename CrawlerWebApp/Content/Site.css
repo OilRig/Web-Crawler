@@ -1,0 +1,98 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+hr {
+    visibility:visible;
+    border:solid 1px #f6aaaa;
+}
+ul {
+    list-style-type:none;
+    list-style-image:none;
+}
+.jumbotron p {
+     margin-bottom:6px;
+ }
+
+.jumbotron div {
+     margin-bottom:16px;
+     clear:none;
+ }
+div.center-block a {
+    cursor:pointer;
+}
+div.center-block a:hover {
+    color:darkmagenta;
+}
+#mainNavbar a:hover {
+    color:darkmagenta;
+}
+#mainNavbar a {
+    color:black;
+}
+
+.startCrawlingButton {
+    width:100%;
+    max-width:320px;
+}
+.wordBreak {
+    word-wrap: break-word;
+}
+.buttonAlign {
+    text-align:center;
+}
+.inputWidth {
+    max-width:200px;
+}
+.blockDisplay {
+    display:block;
+}
+
+#byBoardId
+{
+    position:inherit;
+    width:150px;
+    height:auto;
+    float:left;
+    margin-right:50px;
+
+}
+#byUserId
+{
+    position:inherit;
+     width:150px;
+     margin-right:50px;
+     float:left;
+    height:auto;
+}
+#searchOptions
+{
+    height:116px;
+    position:static;
+
+}
+
+p.themeLink:hover {
+    font-size:10px;
+    cursor:pointer;
+}

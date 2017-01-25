@@ -1,0 +1,122 @@
+﻿@model List<CrawlerWebApp.Models.DbUser>
+
+@{
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script>
+        $(function () {
+            $("a#loadPost").click(function () {
+                var _userId = $(this).data("userid");
+                var _postId = $(this).data("postid");
+                $.ajax({
+                    type: "GET",
+                    url: '@Url.Action("ViewPost", "History")',
+                    data: { userId: _userId, postId: _postId },
+                    dataType: "json",
+                    error: function (xhr) {
+                        alert("Error!");
+                    },
+                    success: function (data) {
+                        $(".modal-title").text("Full post by user " + "'" + data["Author"] + "'");
+                        $(".modal-body").text(data["Content"]);
+                    }
+                });
+            });
+        });
+</script>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title"></h4>
+            </div>
+            <div class="modal-body wordBreak">
+                <p></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-lg-12">
+        <h2>Users with names containing "@ViewBag.UserName"</h2>
+    </div>
+</div>
+<div class="pre-scrollable">
+    <ul class="list-group">
+        @foreach (var mdl in Model)
+        {
+            <li class="list-group-item-heading">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 alert-warning"><p align="center"><strong>@mdl.Name</strong></p></div>
+                </div>
+            </li>
+            <ul id="threadList" style="display:none;">
+                @foreach (var post in mdl.Posts)
+                {
+                    <li>
+                        <div class="row">
+                            <div class="col-md-2 col-sm-2">
+                                <div class="alert-info">Theme:</div>
+                            </div>
+
+                            <div class="col-md-4 col-sm-4">
+                                @post.ThemeName
+                            </div>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="row">
+                            <div class="col-md-2 col-sm-2">
+                                <div class="alert-info"> Thread:</div>
+                            </div>
+                            <div class="col-md-4 col-sm-4">
+                                @post.ThreadName
+                            </div>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="row wordBreak">
+                            <div class="col-md-2 col-sm-2">
+                                <div class="alert-success">  Post: </div>
+                            </div>
+                            <div class="col-md-10 col-sm-10 center-block">
+                                @if (post.Content.Length <= 150)
+                                {
+                                    @post.Content
+                                }
+                                else
+                                { 
+                                    @Html.DisplayFor(p=>post.FirstSymbols)
+                                <a id="loadPost" data-toggle="modal" data-target="#myModal" data-postId="@post.PostId" data-userId="@post.UserId">
+                                    ...View full post
+                                </a> 
+                                }
+                               
+
+                            </div>
+                        </div>
+                        <hr />
+                    </li>
+                }
+            </ul>
+        }
+    </ul>
+</div>
+
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            $("#checkData").addClass("active");
+        });
+    })(jQuery);
+</script>
+

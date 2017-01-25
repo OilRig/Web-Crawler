@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+    <h1>Let's see what we've got!</h1>
+    <br />
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Choose search option:</h3>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-5">
+            @using (Html.BeginForm("SchemaByBoardName", "History", FormMethod.Post))
+            {
+                <div class="input-group  blockDisplay">
+                    <input type="text" class="form-control inputWidth" name="boardName" placeholder="Enter board name...">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default  btn-info" type="submit">Go!</button>
+                    </span>
+                </div>
+            }
+        </div>
+
+        <div class="col-md-5">
+            @using (Html.BeginForm("UserActivityInfo", "History", FormMethod.Post))
+            {
+                <div class="input-group blockDisplay">
+                    <input type="text" class="form-control inputWidth" name="userName" placeholder="Enter user name...">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default btn-info" type="submit">Go!</button>
+                    </span>
+                </div>
+
+            }
+        </div>
+    </div>
+
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            $("#checkData").addClass("active");
+        });
+    })(jQuery);
+</script>

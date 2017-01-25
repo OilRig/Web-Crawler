@@ -1,0 +1,16 @@
+2016/11/24 14:50:17.341|Error|Error: {0}! 
+ Exception: {1}
+2016/11/24 14:50:57.811|Error|Error: {0}! 
+ Exception: {1}
+2016/11/24 14:51:34.860|Error|Error: {0}! 
+ Exception: {1}
+2016/11/24 14:53:07.532|Error|Error: {0}! 
+ Exception: {1}
+2016/11/24 14:54:22.622|Error|Error: {0}! 
+ Exception: {1}
+2016/11/24 14:57:24.150|Error|Error: {0}! 
+ Exception: {1}
+2016/11/24 14:57:52.872|Error|Error: {0}! 
+ Exception: {1}
+2016/11/24 14:59:43.022|Error|Error: {0}! 
+ Exception: {1}

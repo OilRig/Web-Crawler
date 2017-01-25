@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<table border="1">
+    <tr>
+        <td>App start time</td>
+        <td>@ViewBag.StartTime</td>
+    </tr>
+    <tr>
+        <td>Browser name</td>
+        <td>@ViewBag.BrowserName</td>
+    </tr>
+    <tr>
+        <td>Browser version</td>
+        <td>@ViewBag.BrowserVersion</td>
+    </tr>
+    <tr>
+        <td>Current request time</td>
+        <td>@ViewBag.CurrentRequestTime</td>
+    </tr>
+    <tr>
+        <td>Total requests</td>
+        <td>@ViewBag.RequestsAmount</td>
+    </tr>
+    <tr>
+        <td>Session started</td>
+        <td>@ViewBag.SessionStart</td>
+    </tr>
+    <tr>
+        <td>Session Id</td>
+        <td>@ViewBag.SessionID</td>
+    </tr>
+</table>
+

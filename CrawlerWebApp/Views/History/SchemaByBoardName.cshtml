@@ -1,0 +1,48 @@
+﻿@model CrawlerWebApp.Models.DbBoard
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-success alert-dismissable fade in">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+                This page shows results for @Model.Name in database
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <p>Board name: @Model.Name</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <p>Schema:</p>
+        </div>
+    </div>
+            <ul class="list-group">
+                @foreach (var theme in Model.Themes)
+            {
+                var threads = theme.Threads.ToList();
+
+                    <li class="list-group-item-heading">  @theme.Name  </li>
+                    <ul id="threadList" style="display:none;">
+
+                        @foreach (var thread in threads)
+                        {
+                            <li class="list-group-item">  @(new HtmlString(Html.SimpleLink(thread.Url, thread.Name, "_blank")))  </li>
+                        }
+                    </ul>
+                }
+            </ul>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            $("#checkData").addClass("active");
+        });
+    })(jQuery);
+</script>
+

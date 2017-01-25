@@ -1,0 +1,64 @@
+﻿@model CrawlerWebApp.Models.Board
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+
+@using (Html.BeginForm("PushToDatabase", "Crawler", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+        <div class="alert alert-success alert-dismissable fade in">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+            If you see this page, then "@Model.Name" is crawled successfully!
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <p>Board: @Model.Name</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <p>URL: @(new HtmlString(Html.SimpleLink(Model.Url, Model.Url, "_blank")))</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-2">
+                <p>Schema:</p>
+            </div>
+        </div>
+
+        <ul class="list-group">
+            @foreach (var theme in Model.Themes)
+                {
+                    var threads = theme.Threads.ToList();
+
+                <li class="list-group-item-heading"> @theme.Name  @(new HtmlString(Html.SimpleLink(theme.Url, theme.Url, "_blank"))) </li>
+                <ul id="threadList" style="display:none;">
+
+                    @foreach (var thread in threads)
+                    {
+                        <li class="list-group-item"> @(new HtmlString(Html.SimpleLink(thread.Url, thread.Name, "_blank")))</li>
+                    }
+                </ul>
+            }
+        </ul>
+
+        <div class="row">
+            <div class="col-md-3">
+                <button class="btn btn-lg btn-success" type="submit" name="option" value="Process"> Push to database</button>
+            </div>
+       </div>
+
+}
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            $("#goCrawling").addClass("active");
+        });
+    })(jQuery);
+</script>

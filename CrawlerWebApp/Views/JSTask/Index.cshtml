@@ -1,0 +1,55 @@
+﻿@model CrawlerWebApp.Models.JSTaskModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            $("div#shower button").click(function () {
+                $.ajax(
+              {
+                  url: '@Url.Action("Example1","JSTask")',
+                  dataType: "json",
+                  success: function (data) {
+                      alert(data["Age"] + data["Name"]);
+                  },
+                  error: function () {
+                      alert("error");
+                  }
+              });
+            });
+        }); 
+    })(jQuery);
+</script>
+
+<div class="jumbotron">
+
+    <div class="row">
+
+        <div class="col-md-3">
+            <p>Exersise 1: Ajax request</p>
+        </div>
+
+        <div class="col-md-3">
+            <div id="shower"><button class="btn btn-lg btn-success">View result for ex.1</button></div>
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-3">
+            <p>Exersise 2</p>
+        </div>
+
+        <div class="col-md-3">
+
+        </div>
+    </div>
+
+</div>
+
+
